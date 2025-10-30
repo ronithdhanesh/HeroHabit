@@ -1,0 +1,28 @@
+# Virtual Environment
+venv/
+.venv/
+env/
+.env/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE/Editor folders
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Database file
+# IMPORTANT: This will ignore your SQLite database.
+# For local dev this is fine, but in production, you'd never commit your DB.
+habithero.db
+*.sqlite
+*.sqlite3
+
+# OS files
+.DS_Store
+Thumbs.db

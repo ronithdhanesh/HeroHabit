@@ -80,6 +80,9 @@ function Dashboard() {
     fontSize: "0.9rem",
   };
   
+
+
+  
   const completedButtonStyle = {
     ...buttonStyle,
     backgroundColor: "#6c757d",
@@ -126,7 +129,6 @@ function Dashboard() {
     </div>
   );
 }
-
 
 
 export default Dashboard;

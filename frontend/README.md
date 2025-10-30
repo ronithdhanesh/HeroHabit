@@ -1,30 +1,191 @@
-Habit Hero 🚀Habit Hero is a modern, full-stack habit tracker designed to help you build better routines and stay consistent. This application provides a clean dashboard to manage your habits, track your daily progress, and visualize your consistency over time with detailed analytics.(Suggestion: Replace the link above with a screenshot of your app's dashboard!)📋 FeaturesCreate & Manage Habits: Easily add new habits with a name, category (e.g., Learning, Health, Fitness), and frequency.Daily Progress Tracking: Mark habits as complete for the day with a simple "Check-in" button.Instant Feedback: The UI updates instantly when a habit is checked in, disabling the button to prevent double-logging.Dynamic Dashboard: View all your habits in a clean, centralized dashboard.Detailed Analytics: Click any habit to see a detailed view, including:Streak Calculation: Automatically calculates your current consecutive-day streak.Total Check-ins: See your total number of completions.Calendar View: Visualize your consistency with a full calendar highlighting all days you successfully completed your habit.✨ Tech StackFrontendBackendDatabaseReactJSFastAPISQLiteVitePythonSQLAlchemy (ORM)React RouterUvicornPydanticAxios🛠️ Setup and InstallationTo run this project locally, you will need two terminals.Project Structure/HabitHero
+🦸‍♂️ Habit Hero 🚀
+
+A modern full-stack habit tracker to help you build better routines and stay consistent.
+
+Habit Hero empowers users to create, track, and visualize daily habits with a clean, intuitive dashboard and real-time analytics.
+
+💡 Tip: Add a screenshot or GIF of your dashboard here to showcase the UI!
+
+Example:
+
+📋 Features
+
+Create & Manage Habits: Add new habits with a name, category (e.g., Learning, Health, Fitness), and frequency.
+
+Daily Progress Tracking: Mark habits as complete for the day with a simple “Check-in” button.
+
+Instant Feedback: The UI updates instantly when a habit is checked in, preventing double-logging.
+
+Dynamic Dashboard: View all your habits in a clean, centralized dashboard.
+
+Detailed Analytics: Click any habit to view:
+
+🔥 Streak Calculation: Automatically calculates your current streak.
+
+📈 Total Check-ins: See your total completions.
+
+🗓️ Calendar View: Visualize consistency with a full calendar.
+
+✨ Tech Stack
+
+Frontend
+
+ReactJS
+
+Vite
+
+React Router
+
+Axios
+
+Backend
+
+FastAPI
+
+Uvicorn
+
+Python
+
+SQLAlchemy (ORM)
+
+Pydantic
+
+Database
+
+SQLite
+
+🛠️ Setup and Installation
+
+To run this project locally, you will need two terminals (one for backend, one for frontend).
+
+🗂️ Project Structure
+
+/habit-hero
 ├── /backend
 │ ├── /app
-│ │ ├── main.py
-│ │ ├── models.py
-│ │ ├── schemas.py
-│ └── habithero.db
-├── /frontend
-│ ├── /src
-│ │ ├── /components
-│ │ ├── /pages
-│ │ ├── App.jsx
-│ │ └── main.jsx
-└── README.md
+│ │ ├── **init**.py
+│ │ ├── main.py # FastAPI app setup
+│ │ ├── models.py # SQLAlchemy models
+│ │ ├── schemas.py # Pydantic schemas
+│ │ ├── crud.py # Database functions
+│ │ └── database.py # DB connection
+│ └── requirements.txt
+│
+└── /frontend
+├── /src
+│ ├── /components # React components
+│ ├── /pages # Page views
+│ ├── App.jsx
+│ └── main.jsx
+├── package.json
+└── vite.config.js
 
-1. Backend Setup (Terminal 1)Navigate to the backend folder:Bashcd HabitHero/backend
-   Create and activate a virtual environment:Bash# On macOS/Linux
-   python3 -m venv venv
-   source venv/bin/activate
+1. Backend Setup (Terminal 1)
 
-# On Windows
+Clone the repository (if you haven't):
+
+git clone [https://github.com/your-username/habit-hero.git](https://github.com/your-username/habit-hero.git)
+cd habit-hero/backend
+
+Create a virtual environment:
+
+# Windows
 
 python -m venv venv
 .\venv\Scripts\activate
-Install dependencies:Bashpip install "fastapi[all]" sqlalchemy
-Run the backend server:Bashuvicorn app.main:app --reload
-✅ Your backend is now running!It will be accessible at http://localhost:8000.You can view the API docs at http://localhost:8000/docs.2. Frontend Setup (Terminal 2)Navigate to the frontend folder:Bashcd HabitHero/frontend
-Install dependencies:Bashnpm install
-Run the frontend development server:Bashnpm run dev
-✅ Your frontend is now running!It will be accessible at http://localhost:5173 (or the port specified in your terminal).🚦 API EndpointsThe backend provides the following RESTful API endpoints:MethodRouteDescriptionPOST/habits/Create a new habit.GET/habits/Get a list of all habits.GET/habits/{habit_id}Get details for a single habit.PUT/habits/{habit_id}Update an existing habit.DELETE/habits/{habit_id}Delete a habit.POST/habits/{habit_id}/checkinLog a check-in for a habit on a specific date.GET/analytics/{habit_id}/streakCalculate the current streak for a habit.
+
+# macOS / Linux
+
+python3 -m venv venv
+source venv/bin/activate
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+Run the FastAPI server:
+The database (habits.db) will be created automatically in the /backend directory.
+
+uvicorn app.main:app --reload
+
+Your backend is now running at http://127.0.0.1:8000.
+
+2. Frontend Setup (Terminal 2)
+
+Navigate to the frontend directory:
+
+# From the root directory
+
+cd frontend
+
+Install dependencies:
+
+npm install
+
+Run the Vite development server:
+
+npm run dev
+
+Your frontend is now running at http://localhost:5173 (or the port Vite assigns).
+
+📡 API Endpoints
+
+The backend provides the following RESTful API endpoints:
+
+Method
+
+Endpoint
+
+Description
+
+GET
+
+/api/habits/
+
+Retrieve a list of all habits.
+
+POST
+
+/api/habits/
+
+Create a new habit.
+
+GET
+
+/api/habits/{habit_id}
+
+Get details for a specific habit.
+
+POST
+
+/api/habits/{habit_id}/checkin
+
+Log a check-in for a habit.
+
+DELETE
+
+/api/habits/{habit_id}
+
+Delete a habit.
+
+GET
+
+/api/habits/{habit_id}/checkins
+
+Get all check-in dates for a habit.
+
+🚀 Future Roadmap
+
+[ ] User Authentication (JWT)
+
+[ ] Multiple Users
+
+[ ] "Negative" Habits (e.g., "Don't smoke")
+
+[ ] Weekly / Monthly frequency options
+
+[ ] Data visualization with charts
+
+📄 License
+
+This project is licensed under the MIT License. See the LICENSE file for details.

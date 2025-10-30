@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import apiClient from "../api";
 import HabitForm from "../components/HabitForm";
 import { format } from "date-fns";
+import { Link } from 'react-router-dom';
 
 function Dashboard() {
   const [habits, setHabits] = useState([]);
@@ -80,18 +81,21 @@ function Dashboard() {
     fontSize: "0.9rem",
   };
   
-
-
-
   const completedButtonStyle = {
     ...buttonStyle,
     backgroundColor: "#6c757d",
     cursor: "not-allowed",
   };
 
+  const linkStyle = {
+    textDecoration: 'none',
+    color: '#0056b3',
+    fontWeight: 'bold',
+  };
+
   return (
     <div className="dashboard">
-      <h1>Habit Hero Dashboard</h1>
+      <h1 style={{ textAlign: 'center' }}>Habit Hero Dashboard</h1>
       <HabitForm onHabitCreated={handleHabitCreated} />
       <hr />
       <h2>My Habits</h2>
@@ -107,7 +111,11 @@ function Dashboard() {
             return (
               <li key={habit.id} style={itemStyle}>
                 <div>
-                  <strong>{habit.name}</strong>
+                  <strong>
+                    <Link to={`/habit/${habit.id}`} style={linkStyle}>
+                      {habit.name}
+                    </Link>
+                  </strong>
                   <br />
                   <small>({habit.category})</small>
                 </div>
@@ -129,10 +137,5 @@ function Dashboard() {
     </div>
   );
 }
-
-
-
-
-
 
 export default Dashboard;

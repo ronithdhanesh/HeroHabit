@@ -1,11 +1,16 @@
-import Dashboard from "./pages/Dashboard";
+import { Routes, Route } from 'react-router-dom'
+import Dashboard from './pages/Dashboard'
+import HabitDetail from './pages/HabitDetail'
 
 function App() {
   return (
     <div>
-      <Dashboard />
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/habit/:habitId" element={<HabitDetail />} />
+      </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

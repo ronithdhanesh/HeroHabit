@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 import apiClient from "../api";
-import { format } from "date-fns"; 
+import { format } from "date-fns";
 
 function HabitForm({ onHabitCreated }) {
   const [name, setName] = useState("");
-  const [category, setCategory] = useState("learning"); 
-  const [frequency, setFrequency] = useState("daily"); 
+  const [category, setCategory] = useState("learning");
+  const [frequency, setFrequency] = useState("daily");
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
-    setError(null); 
+    e.preventDefault();
+    setError(null);
 
-    
     const today = format(new Date(), "yyyy-MM-dd");
 
-    
     const newHabit = {
       name: name,
       category: category,
@@ -23,25 +21,19 @@ function HabitForm({ onHabitCreated }) {
       start_date: today,
     };
 
-   
     try {
       const response = await apiClient.post("/habits/", newHabit);
+      onHabitCreated(response.data);
       
-      
-      onHabitCreated(response.data); 
-      
-      
-      setName(""); 
+      setName("");
       setCategory("learning");
       setFrequency("daily");
-
     } catch (err) {
       console.error("Error creating habit:", err);
       setError(err.message);
     }
   };
 
-  
   const formStyle = {
     margin: "2rem 0",
     padding: "1.5rem",
@@ -52,13 +44,12 @@ function HabitForm({ onHabitCreated }) {
     gap: "1rem"
   };
 
-  const inputStyle = { padding: "0.5rem", fontSize: "1rem" };
+  const inputStyle = { padding: "0.5rem", fontSize: "1rem", borderRadius: "4px", border: "1px solid #ccc" };
   const buttonStyle = { padding: "0.75rem", fontSize: "1rem", cursor: "pointer", backgroundColor: "#007bff", color: "white", border: "none", borderRadius: "4px" };
-
 
   return (
     <form onSubmit={handleSubmit} style={formStyle}>
-      <h3>Create a New Habit</h3>
+      <h3 style={{ marginTop: 0 }}>Create a New Habit</h3>
       <input
         type="text"
         placeholder="Habit name (e.g., Read 10 pages)"

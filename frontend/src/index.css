@@ -22,7 +22,7 @@ body {
   text-align: left;
 }
 
-/* This class will be used by React-Calendar to highlight completed days */
+
 .habit-completed-day {
   background-color: #28a745 !important;
   color: white !important;

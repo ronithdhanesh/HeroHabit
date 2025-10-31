@@ -4,11 +4,9 @@ from sqlalchemy.orm import Session
 from typing import List
 from datetime import date, timedelta
 
-# Use relative imports from within the 'app' package
 from . import models, schemas
 from .models import SessionLocal, engine
 
-# Create all the database tables (if they don't exist)
 models.create_db_and_tables()
 
 app = FastAPI()
